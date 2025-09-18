@@ -206,9 +206,15 @@
             document.getElementById('totalPrice').textContent = 'Rp ' + parseInt(price).toLocaleString('id-ID');
         }
 
-        // Form submission
-            const scriptURL = 'https://script.google.com/macros/s/AKfycbxgr69HxNCWBaFUfatx6yuazvI645CXu6zPPYXA3y1tsenqgVOKz9hM7hNy2Pcigvc/exec';
-
+        // Form submission with Google Sheets integration
+        document.getElementById('orderForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const submitBtn = document.getElementById('submitBtn');
+            submitBtn.innerHTML = '⏳ Mengirim...';
+            submitBtn.disabled = true;
+            
+            // Collect form data
             const formData = {
                 fullName: document.getElementById('fullName').value,
                 email: document.getElementById('email').value,
@@ -216,35 +222,46 @@
                 selectedPackage: document.getElementById('selectedPackage').value,
                 packagePrice: document.getElementById('packagePrice').value,
                 paymentMethod: document.getElementById('paymentMethod').value,
-                notes: document.getElementById('notes').value
+                notes: document.getElementById('notes').value || '',
+                timestamp: new Date().toISOString()
             };
-
-                fetch(scriptURL, {
-                method: 'POST',
-                body: JSON.stringify(formData)
-        })
-            .then(response => response.json())
-            .then(result => {
-                if (result.success) {
-        // Tampilkan pesan sukses
-            }
-        });
             
-            // Simulate form submission
-            setTimeout(() => {
+            // Replace with your Google Apps Script Web App URL
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbxgr69HxNCWBaFUfatx6yuazvI645CXu6zPPYXA3y1tsenqgVOKz9hM7hNy2Pcigvc/exec';
+            
+            // Send data to Google Sheets
+            fetch(scriptURL, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData)
+            })
+            .then(() => {
+                // Success - show success message
                 document.querySelector('.container > div:nth-child(2)').style.display = 'none';
                 document.getElementById('successMessage').classList.remove('hidden');
                 
-                // Reset button after success
-                setTimeout(() => {
-                    submitBtn.innerHTML = '🚀 Pesan Sekarang';
-                    submitBtn.disabled = false;
-                }, 2000);
-            }, 2000);
+                // Reset form
+                document.getElementById('orderForm').reset();
+                
+                // Reset button
+                submitBtn.innerHTML = '🚀 Pesan Sekarang';
+                submitBtn.disabled = false;
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Terjadi kesalahan saat mengirim data. Silakan coba lagi.');
+                
+                // Reset button
+                submitBtn.innerHTML = '🚀 Pesan Sekarang';
+                submitBtn.disabled = false;
+            });
         });
 
         // Initialize summary
         updateSummary();
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'980d8912c390df08',t:'MTc1ODE2MzgyMi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'980d9f5f10a5a08a',t:'MTc1ODE2NDczNi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
