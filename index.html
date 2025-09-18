@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Premium Account Order - AppPro</title>
+    <title>Premium Account Order - AppName</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
@@ -13,234 +13,238 @@
     </style>
 </head>
 <body class="gradient-bg min-h-screen py-8">
-    <div class="container mx-auto px-4 max-w-4xl">
+    <div class="container mx-auto px-4 max-w-2xl">
         <!-- Header -->
         <div class="text-center mb-8">
-            <h1 class="text-4xl font-bold text-white mb-2">🚀 AppPro Premium</h1>
+            <h1 class="text-4xl font-bold text-white mb-2">🚀 Premium Account</h1>
             <p class="text-white/80 text-lg">Upgrade ke akun premium dan nikmati fitur eksklusif</p>
         </div>
 
-        <!-- Main Content -->
-        <div class="grid md:grid-cols-2 gap-8">
-            <!-- Pricing Cards -->
-            <div class="space-y-6">
-                <h2 class="text-2xl font-semibold text-white mb-4">Pilih Paket Premium</h2>
-                
-                <!-- Monthly Plan -->
-                <div class="bg-white rounded-xl p-6 card-shadow cursor-pointer transition-all hover:scale-105 border-2 border-transparent" onclick="selectPlan('monthly', 99000)">
-                    <div class="flex justify-between items-start mb-4">
+        <!-- Main Form Card -->
+        <div class="bg-white rounded-2xl card-shadow p-8 mb-6">
+            <form id="orderForm" class="space-y-6">
+                <!-- Personal Info -->
+                <div class="border-b pb-6">
+                    <h2 class="text-2xl font-semibold text-gray-800 mb-4">📋 Informasi Pribadi</h2>
+                    <div class="grid md:grid-cols-2 gap-4">
                         <div>
-                            <h3 class="text-xl font-semibold text-gray-800">Bulanan</h3>
-                            <p class="text-gray-600">Fleksibel dan mudah</p>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Nama Lengkap *</label>
+                            <input type="text" id="fullName" required 
+                                   class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all">
                         </div>
-                        <div class="text-right">
-                            <div class="text-2xl font-bold text-purple-600">Rp 99.000</div>
-                            <div class="text-sm text-gray-500">/bulan</div>
-                        </div>
-                    </div>
-                    <ul class="space-y-2 text-sm text-gray-600">
-                        <li class="flex items-center"><span class="text-green-500 mr-2">✓</span> Akses semua fitur premium</li>
-                        <li class="flex items-center"><span class="text-green-500 mr-2">✓</span> Support prioritas 24/7</li>
-                        <li class="flex items-center"><span class="text-green-500 mr-2">✓</span> Tanpa iklan</li>
-                    </ul>
-                </div>
-
-                <!-- Yearly Plan -->
-                <div class="bg-white rounded-xl p-6 card-shadow cursor-pointer transition-all hover:scale-105 border-2 border-transparent relative" onclick="selectPlan('yearly', 990000)">
-                    <div class="absolute -top-3 -right-3 bg-orange-500 text-white px-3 py-1 rounded-full text-xs font-semibold">
-                        Hemat 17%
-                    </div>
-                    <div class="flex justify-between items-start mb-4">
                         <div>
-                            <h3 class="text-xl font-semibold text-gray-800">Tahunan</h3>
-                            <p class="text-gray-600">Paling hemat!</p>
-                        </div>
-                        <div class="text-right">
-                            <div class="text-2xl font-bold text-purple-600">Rp 990.000</div>
-                            <div class="text-sm text-gray-500">/tahun</div>
-                            <div class="text-xs text-green-600 font-medium">~Rp 82.500/bulan</div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Email *</label>
+                            <input type="email" id="email" required 
+                                   class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all">
                         </div>
                     </div>
-                    <ul class="space-y-2 text-sm text-gray-600">
-                        <li class="flex items-center"><span class="text-green-500 mr-2">✓</span> Semua fitur paket bulanan</li>
-                        <li class="flex items-center"><span class="text-green-500 mr-2">✓</span> Bonus storage 50GB</li>
-                        <li class="flex items-center"><span class="text-green-500 mr-2">✓</span> Early access fitur baru</li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Order Form -->
-            <div class="bg-white rounded-xl p-6 card-shadow">
-                <h2 class="text-2xl font-semibold text-gray-800 mb-6">Form Pemesanan</h2>
-                
-                <form id="orderForm" class="space-y-4">
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Nama Lengkap *</label>
-                        <input type="text" id="fullName" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all" placeholder="Masukkan nama lengkap">
-                    </div>
-
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Email *</label>
-                        <input type="email" id="email" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all" placeholder="nama@email.com">
-                    </div>
-
-                    <div>
+                    <div class="mt-4">
                         <label class="block text-sm font-medium text-gray-700 mb-2">Nomor WhatsApp *</label>
-                        <input type="tel" id="whatsapp" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all" placeholder="08xxxxxxxxxx">
+                        <input type="tel" id="whatsapp" required placeholder="08xxxxxxxxxx"
+                               class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all">
                     </div>
+                </div>
 
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Paket Dipilih</label>
-                        <input type="text" id="selectedPlan" readonly class="w-full px-4 py-3 bg-gray-100 border border-gray-300 rounded-lg text-gray-600" placeholder="Pilih paket di sebelah kiri">
+                <!-- Package Selection -->
+                <div class="border-b pb-6">
+                    <h2 class="text-2xl font-semibold text-gray-800 mb-4">💎 Pilih Paket Premium</h2>
+                    <div class="grid md:grid-cols-3 gap-4">
+                        <div class="package-option border-2 border-gray-200 rounded-lg p-4 cursor-pointer hover:border-purple-500 transition-all" data-package="basic" data-price="99000">
+                            <div class="text-center">
+                                <div class="text-2xl mb-2">⭐</div>
+                                <h3 class="font-semibold text-gray-800">Basic</h3>
+                                <p class="text-purple-600 font-bold text-lg">Rp 99.000</p>
+                                <p class="text-sm text-gray-600 mt-2">1 Bulan</p>
+                            </div>
+                        </div>
+                        <div class="package-option border-2 border-purple-500 bg-purple-50 rounded-lg p-4 cursor-pointer" data-package="pro" data-price="249000">
+                            <div class="text-center">
+                                <div class="text-2xl mb-2">🌟</div>
+                                <h3 class="font-semibold text-gray-800">Pro</h3>
+                                <p class="text-purple-600 font-bold text-lg">Rp 249.000</p>
+                                <p class="text-sm text-gray-600 mt-2">3 Bulan</p>
+                                <span class="bg-purple-500 text-white text-xs px-2 py-1 rounded-full">POPULER</span>
+                            </div>
+                        </div>
+                        <div class="package-option border-2 border-gray-200 rounded-lg p-4 cursor-pointer hover:border-purple-500 transition-all" data-package="premium" data-price="449000">
+                            <div class="text-center">
+                                <div class="text-2xl mb-2">💎</div>
+                                <h3 class="font-semibold text-gray-800">Premium</h3>
+                                <p class="text-purple-600 font-bold text-lg">Rp 449.000</p>
+                                <p class="text-sm text-gray-600 mt-2">6 Bulan</p>
+                            </div>
+                        </div>
                     </div>
+                    <input type="hidden" id="selectedPackage" value="pro">
+                    <input type="hidden" id="packagePrice" value="249000">
+                </div>
 
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Total Pembayaran</label>
-                        <input type="text" id="totalPrice" readonly class="w-full px-4 py-3 bg-gray-100 border border-gray-300 rounded-lg text-gray-600 font-semibold text-lg">
+                <!-- Payment Method -->
+                <div class="border-b pb-6">
+                    <h2 class="text-2xl font-semibold text-gray-800 mb-4">💳 Metode Pembayaran</h2>
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div class="payment-option border-2 border-purple-500 bg-purple-50 rounded-lg p-4 cursor-pointer" data-method="transfer">
+                            <div class="flex items-center">
+                                <div class="text-2xl mr-3">🏦</div>
+                                <div>
+                                    <h3 class="font-semibold">Transfer Bank</h3>
+                                    <p class="text-sm text-gray-600">BCA, Mandiri, BRI</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="payment-option border-2 border-gray-200 rounded-lg p-4 cursor-pointer hover:border-purple-500 transition-all" data-method="ewallet">
+                            <div class="flex items-center">
+                                <div class="text-2xl mr-3">📱</div>
+                                <div>
+                                    <h3 class="font-semibold">E-Wallet</h3>
+                                    <p class="text-sm text-gray-600">GoPay, OVO, DANA</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
+                    <input type="hidden" id="paymentMethod" value="transfer">
+                </div>
 
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Catatan Tambahan</label>
-                        <textarea id="notes" rows="3" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all" placeholder="Catatan khusus (opsional)"></textarea>
+                <!-- Additional Notes -->
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Catatan Tambahan</label>
+                    <textarea id="notes" rows="3" placeholder="Tuliskan catatan atau permintaan khusus..."
+                              class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"></textarea>
+                </div>
+
+                <!-- Order Summary -->
+                <div class="bg-gray-50 rounded-lg p-6">
+                    <h3 class="font-semibold text-gray-800 mb-3">📊 Ringkasan Pesanan</h3>
+                    <div class="flex justify-between items-center mb-2">
+                        <span>Paket:</span>
+                        <span id="summaryPackage" class="font-semibold">Pro (3 Bulan)</span>
                     </div>
-
-                    <button type="submit" id="submitBtn" class="w-full bg-purple-600 hover:bg-purple-700 text-white font-semibold py-4 px-6 rounded-lg transition-all transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed">
-                        🛒 Pesan Sekarang
-                    </button>
-                </form>
-
-                <!-- Success Message -->
-                <div id="successMessage" class="hidden mt-6 p-4 bg-green-100 border border-green-400 text-green-700 rounded-lg">
-                    <div class="flex items-center">
-                        <span class="text-green-500 mr-2">✅</span>
-                        <div>
-                            <strong>Pesanan berhasil dikirim!</strong>
-                            <p class="text-sm mt-1">Tim kami akan menghubungi Anda dalam 1x24 jam untuk konfirmasi pembayaran.</p>
+                    <div class="flex justify-between items-center mb-2">
+                        <span>Metode Pembayaran:</span>
+                        <span id="summaryPayment" class="font-semibold">Transfer Bank</span>
+                    </div>
+                    <div class="border-t pt-2 mt-3">
+                        <div class="flex justify-between items-center text-lg font-bold text-purple-600">
+                            <span>Total:</span>
+                            <span id="totalPrice">Rp 249.000</span>
                         </div>
                     </div>
                 </div>
-            </div>
+
+                <!-- Submit Button -->
+                <button type="submit" id="submitBtn" 
+                        class="w-full bg-gradient-to-r from-purple-600 to-blue-600 text-white font-semibold py-4 px-6 rounded-lg hover:from-purple-700 hover:to-blue-700 transform hover:scale-105 transition-all duration-200 shadow-lg">
+                    🚀 Pesan Sekarang
+                </button>
+            </form>
         </div>
 
-        <!-- Features Section -->
-        <div class="mt-12 bg-white/10 backdrop-blur-sm rounded-xl p-8">
-            <h3 class="text-2xl font-semibold text-white text-center mb-8">Mengapa Memilih Premium?</h3>
-            <div class="grid md:grid-cols-3 gap-6">
-                <div class="text-center text-white">
-                    <div class="text-4xl mb-4">⚡</div>
-                    <h4 class="font-semibold mb-2">Performa Super Cepat</h4>
-                    <p class="text-white/80 text-sm">Akses aplikasi tanpa batas dengan kecepatan maksimal</p>
-                </div>
-                <div class="text-center text-white">
-                    <div class="text-4xl mb-4">🛡️</div>
-                    <h4 class="font-semibold mb-2">Keamanan Terjamin</h4>
-                    <p class="text-white/80 text-sm">Data Anda dilindungi dengan enkripsi tingkat enterprise</p>
-                </div>
-                <div class="text-center text-white">
-                    <div class="text-4xl mb-4">🎯</div>
-                    <h4 class="font-semibold mb-2">Fitur Eksklusif</h4>
-                    <p class="text-white/80 text-sm">Nikmati fitur-fitur canggih yang tidak tersedia di versi gratis</p>
-                </div>
-            </div>
+        <!-- Success Message -->
+        <div id="successMessage" class="hidden bg-green-500 text-white rounded-lg p-6 text-center">
+            <div class="text-4xl mb-2">✅</div>
+            <h3 class="text-xl font-semibold mb-2">Pesanan Berhasil Dikirim!</h3>
+            <p>Kami akan menghubungi Anda dalam 1x24 jam untuk konfirmasi pembayaran.</p>
         </div>
     </div>
 
     <script>
-        let selectedPlanData = null;
-
-        function selectPlan(planType, price) {
-            // Remove previous selection
-            document.querySelectorAll('.border-purple-500').forEach(el => {
-                el.classList.remove('border-purple-500', 'bg-purple-50');
+        // Package selection
+        document.querySelectorAll('.package-option').forEach(option => {
+            option.addEventListener('click', function() {
+                document.querySelectorAll('.package-option').forEach(opt => {
+                    opt.classList.remove('border-purple-500', 'bg-purple-50');
+                    opt.classList.add('border-gray-200');
+                });
+                
+                this.classList.add('border-purple-500', 'bg-purple-50');
+                this.classList.remove('border-gray-200');
+                
+                const package = this.dataset.package;
+                const price = this.dataset.price;
+                
+                document.getElementById('selectedPackage').value = package;
+                document.getElementById('packagePrice').value = price;
+                
+                updateSummary();
             });
+        });
 
-            // Add selection to clicked plan
-            event.currentTarget.classList.add('border-purple-500', 'bg-purple-50');
+        // Payment method selection
+        document.querySelectorAll('.payment-option').forEach(option => {
+            option.addEventListener('click', function() {
+                document.querySelectorAll('.payment-option').forEach(opt => {
+                    opt.classList.remove('border-purple-500', 'bg-purple-50');
+                    opt.classList.add('border-gray-200');
+                });
+                
+                this.classList.add('border-purple-500', 'bg-purple-50');
+                this.classList.remove('border-gray-200');
+                
+                document.getElementById('paymentMethod').value = this.dataset.method;
+                updateSummary();
+            });
+        });
 
-            // Update form
-            const planName = planType === 'monthly' ? 'Premium Bulanan' : 'Premium Tahunan';
-            document.getElementById('selectedPlan').value = planName;
-            document.getElementById('totalPrice').value = `Rp ${price.toLocaleString('id-ID')}`;
+        function updateSummary() {
+            const package = document.getElementById('selectedPackage').value;
+            const price = document.getElementById('packagePrice').value;
+            const payment = document.getElementById('paymentMethod').value;
             
-            selectedPlanData = { planType, planName, price };
+            const packageNames = {
+                'basic': 'Basic (1 Bulan)',
+                'pro': 'Pro (3 Bulan)',
+                'premium': 'Premium (6 Bulan)'
+            };
+            
+            const paymentNames = {
+                'transfer': 'Transfer Bank',
+                'ewallet': 'E-Wallet'
+            };
+            
+            document.getElementById('summaryPackage').textContent = packageNames[package];
+            document.getElementById('summaryPayment').textContent = paymentNames[payment];
+            document.getElementById('totalPrice').textContent = 'Rp ' + parseInt(price).toLocaleString('id-ID');
         }
 
-        document.getElementById('orderForm').addEventListener('submit', async function(e) {
-            e.preventDefault();
+        // Form submission
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbxgr69HxNCWBaFUfatx6yuazvI645CXu6zPPYXA3y1tsenqgVOKz9hM7hNy2Pcigvc/exec';
 
-            if (!selectedPlanData) {
-                alert('Silakan pilih paket premium terlebih dahulu!');
-                return;
-            }
-
-            const submitBtn = document.getElementById('submitBtn');
-            const originalText = submitBtn.innerHTML;
-            submitBtn.innerHTML = '⏳ Mengirim...';
-            submitBtn.disabled = true;
-
-            // Collect form data
             const formData = {
-                timestamp: new Date().toLocaleString('id-ID'),
                 fullName: document.getElementById('fullName').value,
                 email: document.getElementById('email').value,
                 whatsapp: document.getElementById('whatsapp').value,
-                selectedPlan: selectedPlanData.planName,
-                totalPrice: `Rp ${selectedPlanData.price.toLocaleString('id-ID')}`,
-                notes: document.getElementById('notes').value || '-',
-                status: 'Pending'
+                selectedPackage: document.getElementById('selectedPackage').value,
+                packagePrice: document.getElementById('packagePrice').value,
+                paymentMethod: document.getElementById('paymentMethod').value,
+                notes: document.getElementById('notes').value
             };
 
-            try {
-                // Simulate sending to Google Sheets (replace with your actual Google Apps Script URL)
-                const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwr2at2S3MwEZlntowrMga4lPz6oxlE4l_nV_ykGEfAUOVURgrIcp_CByf08yrzMJ83/exec';
-                
-                // For demo purposes, we'll simulate a successful submission
-                await new Promise(resolve => setTimeout(resolve, 2000));
-                
-                // In real implementation, uncomment this:
-                // const response = await fetch(GOOGLE_SCRIPT_URL, {
-                //     method: 'POST',
-                //     mode: 'no-cors',
-                //     headers: {
-                //         'Content-Type': 'application/json',
-                //     },
-                //     body: JSON.stringify(formData)
-                // });
-
-                // Show success message
-                document.getElementById('successMessage').classList.remove('hidden');
-                document.getElementById('orderForm').reset();
-                document.getElementById('selectedPlan').value = '';
-                document.getElementById('totalPrice').value = '';
-                
-                // Remove plan selection
-                document.querySelectorAll('.border-purple-500').forEach(el => {
-                    el.classList.remove('border-purple-500', 'bg-purple-50');
-                });
-                
-                selectedPlanData = null;
-
-                // Scroll to success message
-                document.getElementById('successMessage').scrollIntoView({ behavior: 'smooth' });
-
-            } catch (error) {
-                alert('Terjadi kesalahan saat mengirim pesanan. Silakan coba lagi.');
-                console.error('Error:', error);
-            } finally {
-                submitBtn.innerHTML = originalText;
-                submitBtn.disabled = false;
+                fetch(scriptURL, {
+                method: 'POST',
+                body: JSON.stringify(formData)
+        })
+            .then(response => response.json())
+            .then(result => {
+                if (result.success) {
+        // Tampilkan pesan sukses
             }
         });
-
-        // Auto-hide success message after 10 seconds
-        setInterval(() => {
-            const successMsg = document.getElementById('successMessage');
-            if (!successMsg.classList.contains('hidden')) {
+            
+            // Simulate form submission
+            setTimeout(() => {
+                document.querySelector('.container > div:nth-child(2)').style.display = 'none';
+                document.getElementById('successMessage').classList.remove('hidden');
+                
+                // Reset button after success
                 setTimeout(() => {
-                    successMsg.classList.add('hidden');
-                }, 10000);
-            }
-        }, 1000);
+                    submitBtn.innerHTML = '🚀 Pesan Sekarang';
+                    submitBtn.disabled = false;
+                }, 2000);
+            }, 2000);
+        });
+
+        // Initialize summary
+        updateSummary();
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'980d5971f5090ad8',t:'MTc1ODE2MTg3MS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'980d8912c390df08',t:'MTc1ODE2MzgyMi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
